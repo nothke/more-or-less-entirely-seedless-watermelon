@@ -7,6 +7,7 @@ Ivan Notaros - Nothke
 @nothke
 nothke@gmail.com
 
-Nomi - The_Nomi | melon fact: watermelon is actually a special kind of berry
+Nomi - The_Nomi 
 @the_nomi
 the_nomi@jizai.org
+| melon fact: watermelon is actually a special kind of berry
