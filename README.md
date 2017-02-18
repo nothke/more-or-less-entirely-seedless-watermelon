@@ -1,7 +1,7 @@
 # more-or-less-entirely-seedless-watermelon
 More or less entirely descriptionless
 
-More or Less Entirely Seedless Melon was created by cats gathered at Scrambleshake17 summit that happened right aftre Screenshake17.
+More or Less Entirely Seedless Melon was created by cats gathered at Scrambleshake17 summit that happened right after Screenshake17.
 
 More or Less Seedless:
 
