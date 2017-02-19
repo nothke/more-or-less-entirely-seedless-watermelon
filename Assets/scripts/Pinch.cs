@@ -19,7 +19,7 @@ public class Pinch : MonoBehaviour
 
         bool isDown = Input.touchCount > 0;
 
-        Vector2[] touchPositions;
+        Vector2[] touchPositions = null;
 
         // if on android device
         if (Input.touchCount > 0)
@@ -46,7 +46,7 @@ public class Pinch : MonoBehaviour
         isDown = Input.GetMouseButton(0);
 #endif
 
-        if (isDown)
+        if (isDown && touchPositions != null)
         {
             foreach (var touchPosition in touchPositions)
             {
