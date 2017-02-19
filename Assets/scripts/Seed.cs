@@ -6,4 +6,10 @@ public class Seed : MonoBehaviour {
 
     public Collider2D col;
     public Rigidbody2D rb;
+
+    public void Start()
+    {
+        rb = gameObject.AddComponent<Rigidbody2D>();
+        rb.gravityScale = 0;
+    }
 }
