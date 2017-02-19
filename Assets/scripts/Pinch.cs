@@ -9,7 +9,7 @@ public class Pinch : MonoBehaviour
     void Awake()
     {
         // Get all seeds in scene
-        seeds = GetComponents<Seed>();
+        seeds = FindObjectsOfType<Seed>();
         Debug.Log("Found " + seeds.Length + " seeds");
     }
 
