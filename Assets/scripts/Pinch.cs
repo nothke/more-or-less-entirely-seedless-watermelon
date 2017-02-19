@@ -4,52 +4,60 @@ using UnityEngine;
 
 public class Pinch : MonoBehaviour
 {
-    public List<Seed> seeds;
+    Seed[] seeds;
 
-    void Start()
+    void Awake()
     {
-        // get touch from both sides
+        // Get all seeds in scene
+        seeds = GetComponents<Seed>();
+        Debug.Log("Found " + seeds.Length + " seeds");
     }
 
     void Update()
     {
         int divider = Screen.currentResolution.width / 2;
 
-        Vector2 mouseP = Input.mousePosition;
-
         bool isDown = Input.touchCount > 0;
 
-        Vector2 touchPos = Vector2.zero;
+        Vector2[] touchPositions;
 
-        //Vector2 touchPositions = new Vector2();
+        // if on android device
+        if (Input.touchCount > 0)
+        {
+            touchPositions = new Vector2[Input.touchCount];
 
-        //if (Input.touchCount > 0)
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                Touch touch = Input.touches[i];
 
-        /*
-        Touch t = Input.GetTouch(0);
+                // convert pixel position to world
+                Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
 
-        int player = t.position.x < divider ? 1 : 2;
+                touchPositions[i] = touchPosition;
+            }
+        }
 
-        Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-        //Vector2 touchPos = new Vector2(wp.x, wp.y);
-        */
-
+        // if in Unity just override the position array to mouse, no pinching for now
 #if UNITY_EDITOR
-        touchPos = mouseP;
+        Vector2 mouseScreenPosition = Input.mousePosition;
+
+        touchPositions = new Vector2[1];
+        touchPositions[0] = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
         isDown = Input.GetMouseButton(0);
 #endif
-        Vector3 wp = Camera.main.ScreenToWorldPoint(touchPos);
 
-        Debug.DrawLine(touchPos, touchPos + Vector2.up * 10, Color.white);
-        
         if (isDown)
         {
-            Debug.Log("DOWN! " + touchPos);
-
-            foreach (var seed in seeds)
+            foreach (var touchPosition in touchPositions)
             {
-                if (Vector2.Distance(seed.transform.position, wp) < 1)
-                    seed.rb.AddForce((seed.transform.position - wp) * 100);
+                Debug.DrawLine(touchPosition, touchPosition + Vector2.up * 1, Color.white);
+
+                foreach (var seed in seeds)
+                {
+                    // just add force to every seed for every touch for now
+                    if (Vector2.Distance(seed.transform.position, touchPosition) < 1)
+                        seed.rb.AddForce(((Vector2)seed.transform.position - touchPosition) * 100);
+                }
             }
         }
     }
