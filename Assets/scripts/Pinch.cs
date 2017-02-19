@@ -19,19 +19,21 @@ public class Pinch : MonoBehaviour
 
         bool isDown = Input.touchCount > 0;
 
-        
         Vector2 touchPos = Vector2.zero;
+
+        //Vector2 touchPositions = new Vector2();
+
+        //if (Input.touchCount > 0)
 
         /*
         Touch t = Input.GetTouch(0);
-        
-        
 
         int player = t.position.x < divider ? 1 : 2;
 
         Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
         //Vector2 touchPos = new Vector2(wp.x, wp.y);
         */
+
 #if UNITY_EDITOR
         touchPos = mouseP;
         isDown = Input.GetMouseButton(0);
