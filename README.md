@@ -14,9 +14,9 @@ Nomi - The_Nomi (premi)
 the_nomi@jizai.org
 | melon fact: watermelon is actually a special kind of berry.
 
-Pepijin Willekens - (prepijin) 
-@PepijinWillekens
-| fun fact: Pepijin is actually Pippin.
+Pepijn Willekens - (prepijn) 
+@PepijnWillekens
+| fun fact: Pepijn is actually Pippin.
 
 Tsitsi Chiumya - (presipresi)
 @shapapie
