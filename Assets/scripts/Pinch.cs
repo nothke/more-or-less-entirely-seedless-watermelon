@@ -5,7 +5,8 @@ using UnityEngine;
 public class Pinch : MonoBehaviour
 {
     Seed[] seeds;
-
+    public float force = 100;
+    public float fingerRadius = 1;
     void Awake()
     {
         // Get all seeds in scene
@@ -21,10 +22,21 @@ public class Pinch : MonoBehaviour
 
         Vector2[] touchPositions = null;
 
+#if UNITY_EDITOR
+        isDown |= Input.GetMouseButton(0);
+#endif
+
         // if on android device
-        if (Input.touchCount > 0)
+        if (isDown)
         {
-            touchPositions = new Vector2[Input.touchCount];
+            int count = Input.touchCount;
+
+#if UNITY_EDITOR
+            if(Input.GetMouseButton(0))
+                count++;      
+#endif
+
+            touchPositions = new Vector2[count];
 
             for (int i = 0; i < Input.touchCount; i++)
             {
@@ -35,16 +47,16 @@ public class Pinch : MonoBehaviour
 
                 touchPositions[i] = touchPosition;
             }
+
+#if UNITY_EDITOR
+
+            if (Input.GetMouseButton(0))
+                touchPositions[Input.touchCount] = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+#endif
         }
 
         // if in Unity just override the position array to mouse, no pinching for now
-#if UNITY_EDITOR
-        Vector2 mouseScreenPosition = Input.mousePosition;
 
-        touchPositions = new Vector2[1];
-        touchPositions[0] = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
-        isDown = Input.GetMouseButton(0);
-#endif
 
         if (isDown && touchPositions != null)
         {
@@ -55,8 +67,8 @@ public class Pinch : MonoBehaviour
                 foreach (var seed in seeds)
                 {
                     // just add force to every seed for every touch for now
-                    if (Vector2.Distance(seed.transform.position, touchPosition) < 1)
-                        seed.rb.AddForce(((Vector2)seed.transform.position - touchPosition) * 100);
+                    if (Vector2.Distance(seed.transform.position, touchPosition) < fingerRadius)
+                        seed.rb.AddForce(((Vector2)seed.transform.position - touchPosition) * force);
                 }
             }
         }
