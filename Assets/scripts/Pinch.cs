@@ -23,7 +23,7 @@ public class Pinch : MonoBehaviour
         Vector2[] touchPositions = null;
 
 #if UNITY_EDITOR
-        isDown |= Input.GetMouseButton(0);
+        //isDown |= Input.GetMouseButton(0);
 #endif
 
         // if on android device
@@ -32,8 +32,8 @@ public class Pinch : MonoBehaviour
             int count = Input.touchCount;
 
 #if UNITY_EDITOR
-            if(Input.GetMouseButton(0))
-                count++;      
+            //if(Input.GetMouseButton(0))
+                //count++;      
 #endif
 
             touchPositions = new Vector2[count];
@@ -50,8 +50,8 @@ public class Pinch : MonoBehaviour
 
 #if UNITY_EDITOR
 
-            if (Input.GetMouseButton(0))
-                touchPositions[Input.touchCount] = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //if (Input.GetMouseButton(0))
+                //touchPositions[Input.touchCount] = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 #endif
         }
 
@@ -62,7 +62,8 @@ public class Pinch : MonoBehaviour
         {
             foreach (var touchPosition in touchPositions)
             {
-                Debug.DrawLine(touchPosition, touchPosition + Vector2.up * 1, Color.white);
+                Debug.DrawLine(touchPosition -Vector2.up/2, touchPosition + Vector2.up /2, Color.green);
+                Debug.DrawLine(touchPosition - Vector2.left / 2, touchPosition + Vector2.left / 2, Color.green);
 
                 foreach (var seed in seeds)
                 {
