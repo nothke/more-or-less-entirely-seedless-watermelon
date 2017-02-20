@@ -11,7 +11,7 @@ public class Seed : MonoBehaviour {
     {
         rb = gameObject.AddComponent<Rigidbody2D>();
         rb.gravityScale = 0;
-        rb.drag = 20;
+        rb.drag = 0;
         rb.angularDrag = 10;
     }
 }
