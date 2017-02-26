@@ -63,7 +63,7 @@ public class PrepijnsPinch : MonoBehaviour {
         if (isDown && touchPositions != null)
         {
 
-            Debug.Log(touchPositions.Length);
+
             for (int i =0; i< touchPositions.Length;i++)
             {
                 for (int j = 0; j < touchPositions.Length; j++)

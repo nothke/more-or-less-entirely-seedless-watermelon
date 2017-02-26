@@ -19,6 +19,7 @@ public class Eater : MonoBehaviour {
         {
             Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touches[i].position);
             Instantiate(prefab, (Vector3)touchPosition,Quaternion.identity);
+            Debug.Log("test");
         }
     }
 }
