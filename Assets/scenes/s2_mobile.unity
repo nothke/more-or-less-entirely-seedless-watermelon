@@ -3068,7 +3068,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closenessRadius: 0
   seedlessRadius: 0
-  sound: {fileID: 0}
+  biteSounds:
+  - {fileID: 8300000, guid: c1ed07b8e91c04449adad40c06dbe3a8, type: 3}
+  - {fileID: 8300000, guid: 45926a57bfb806541bc6c142015cdd24, type: 3}
+  - {fileID: 8300000, guid: 13915d3fcaafe1940a4971e6d6d2a7a5, type: 3}
+  - {fileID: 8300000, guid: 73848daa8c7638c48921afba49fde798, type: 3}
   ignoreCheck: 1
 --- !u!1 &659340868
 GameObject:
@@ -3672,7 +3676,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closenessRadius: 0
   seedlessRadius: 0
-  sound: {fileID: 0}
+  biteSounds:
+  - {fileID: 8300000, guid: c1ed07b8e91c04449adad40c06dbe3a8, type: 3}
+  - {fileID: 8300000, guid: 45926a57bfb806541bc6c142015cdd24, type: 3}
+  - {fileID: 8300000, guid: 13915d3fcaafe1940a4971e6d6d2a7a5, type: 3}
+  - {fileID: 8300000, guid: 73848daa8c7638c48921afba49fde798, type: 3}
   ignoreCheck: 1
 --- !u!1001 &924748162
 Prefab:
