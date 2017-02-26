@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class MainMenu : MonoBehaviour
 
     public float startDelay = 2;
 
+    public Transform PREEPS;
 
     [System.Serializable]
     public class SpriteAppear
@@ -23,6 +25,11 @@ public class MainMenu : MonoBehaviour
 
     public SpriteAppear[] spriteAppears;
 
+    bool splashEnded;
+    bool moleswEnded;
+
+    public AudioClip preepsClip;
+
     void Start()
     {
         foreach (SpriteAppear SA in spriteAppears)
@@ -30,11 +37,37 @@ public class MainMenu : MonoBehaviour
             SA.sprite.enabled = false;
         }
 
+        PREEPS.localScale = Vector3.zero;
+
         StartCoroutine(AppearCo());
     }
 
     IEnumerator AppearCo()
     {
+        yield return new WaitForSeconds(1);
+
+        // SPLASH!
+        PREEPS.transform.localScale = Vector3.zero;
+
+        preepsClip.Play(Vector3.zero, minDistance: 1000);
+
+        PREEPS.transform.DOScale(Vector3.one * 0.69f, 0.3f);
+
+        PREEPS.transform.DOPunchRotation(Vector3.forward * 10, 1, 20);
+
+        yield return new WaitForSeconds(1);
+
+        // PRESENT
+
+
+
+        yield return new WaitForSeconds(1);
+
+
+
+        PREEPS.transform.DOScale(Vector3.zero, 0.3f);
+
+        // MOLESW!
         yield return new WaitForSeconds(startDelay);
         GetComponent<AudioSource>().Play();
 
@@ -48,5 +81,25 @@ public class MainMenu : MonoBehaviour
 
             pivot.transform.DOPunchRotation(Random.onUnitSphere * punchAngle, 0.1f);
         }
+
+        moleswEnded = true;
     }
+
+    private void Update()
+    {
+        if (moleswEnded)
+            if (Input.touchCount > 0)
+                SceneManager.LoadScene(1);
+    }
+
+    public void ShowCredits()
+    {
+
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
 }
