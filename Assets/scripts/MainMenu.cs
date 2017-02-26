@@ -14,6 +14,7 @@ public class MainMenu : MonoBehaviour
     public float startDelay = 2;
 
     public Transform PREEPS;
+    public Transform present;
 
     [System.Serializable]
     public class SpriteAppear
@@ -29,6 +30,7 @@ public class MainMenu : MonoBehaviour
     bool moleswEnded;
 
     public AudioClip preepsClip;
+    public AudioClip presentClip;
 
     void Start()
     {
@@ -38,6 +40,10 @@ public class MainMenu : MonoBehaviour
         }
 
         PREEPS.localScale = Vector3.zero;
+        present.localScale = Vector3.zero;
+
+        creditsButton.localScale = Vector3.zero;
+        playButton.localScale = Vector3.zero;
 
         StartCoroutine(AppearCo());
     }
@@ -55,11 +61,12 @@ public class MainMenu : MonoBehaviour
 
         PREEPS.transform.DOPunchRotation(Vector3.forward * 10, 1, 20);
 
+
         yield return new WaitForSeconds(1);
 
         // PRESENT
-
-
+        present.DOScale(Vector3.one * 1.448438f, 0.1f);
+        presentClip.Play(Vector3.zero, minDistance: 1000, volume: 0.5f);
 
         yield return new WaitForSeconds(1);
 
@@ -83,18 +90,30 @@ public class MainMenu : MonoBehaviour
         }
 
         moleswEnded = true;
+
+        yield return new WaitForSeconds(0.2f);
+
+        playButton.DOScale(1, 0.2f);
+        creditsButton.DOScale(1, 0.2f);
     }
 
     private void Update()
     {
+        /*
         if (moleswEnded)
             if (Input.touchCount > 0)
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(1);*/
     }
+
+    public Transform credits;
+
+    public Transform playButton;
+    public Transform creditsButton;
 
     public void ShowCredits()
     {
-
+        pivot.DOMoveX(10, 0.3f);
+        credits.DOMoveX(0.14f, 0.3f);
     }
 
     public void StartGame()
