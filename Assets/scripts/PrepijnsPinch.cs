@@ -17,8 +17,6 @@ public class PrepijnsPinch : MonoBehaviour {
 
     void FixedUpdate()
     {
-        int divider = Screen.currentResolution.width / 2;
-
         bool isDown = Input.touchCount > 0;
 
         Vector2[] touchPositions = null;
@@ -62,8 +60,6 @@ public class PrepijnsPinch : MonoBehaviour {
 
         if (isDown && touchPositions != null)
         {
-
-
             for (int i =0; i< touchPositions.Length;i++)
             {
                 for (int j = 0; j < touchPositions.Length; j++)
