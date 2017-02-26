@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using DG.Tweening;
 
 public class Bite : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class Bite : MonoBehaviour
         if (valid)
         {
             biteSounds.Play(Vector3.zero, minDistance: 10, volume: 1);
+            Camera.main.DOShakePosition(0.5f, 0.3f, 7);
         }
         else
         {

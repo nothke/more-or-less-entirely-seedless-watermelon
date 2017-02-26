@@ -40,6 +40,11 @@ public class ExtraDrag : MonoBehaviour
         melonParticles.transform.position = (Vector3) rb.position - (2 * Vector3.forward);
         melonParticles.transform.rotation = Quaternion.LookRotation(-rb.velocity);
 
+        Vector3 originalScale = Vector3.one * 0.6236116f;
+
+        rb.transform.localScale = Vector3.one * 2;
+        rb.transform.DOScale(originalScale, 0.3f);
+
         splashClips.Play(rb.position, minDistance: 10, volume: rb.velocity.magnitude * 0.1f);
 
         melonParticles.Emit(10);
