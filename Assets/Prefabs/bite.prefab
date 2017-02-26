@@ -136,6 +136,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closenessRadius: 0.6
-  seedlessRadius: 1.2
+  seedlessRadius: 0.8
   sound: {fileID: 0}
   ignoreCheck: 0
