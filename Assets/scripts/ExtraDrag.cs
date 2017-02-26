@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using DG.Tweening;
 
 public class ExtraDrag : MonoBehaviour
 {
@@ -33,7 +34,9 @@ public class ExtraDrag : MonoBehaviour
 
     }
     
-    public void makeParticles(Rigidbody2D rb) { 
+    public void makeParticles(Rigidbody2D rb) {
+        Camera.main.DOShakeRotation(1,1, 10);
+
         melonParticles.transform.position = (Vector3) rb.position - (2 * Vector3.forward);
         melonParticles.transform.rotation = Quaternion.LookRotation(-rb.velocity);
 
