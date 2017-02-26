@@ -41,7 +41,6 @@ public class Bite : MonoBehaviour {
 
         if (valid)
         {
-            bites.Add(this);
             if (sound) {
                 AudioSource.PlayClipAtPoint(sound, Camera.main.transform.position);
             }
