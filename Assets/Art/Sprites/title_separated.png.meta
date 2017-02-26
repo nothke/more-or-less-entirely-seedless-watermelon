@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 1e0d58f120c84074db1645427d8c7626
-timeCreated: 1488137077
+timeCreated: 1488138700
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,6 +10,8 @@ TextureImporter:
     21300006: title_separated_3
     21300008: title_separated_4
     21300010: title_separated_5
+    21300012: title_separated_6
+    21300014: title_separated_7
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -136,7 +138,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 597
-        width: 587
+        width: 229
         height: 262
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -164,6 +166,32 @@ TextureImporter:
         y: 22
         width: 989
         height: 355
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: title_separated_6
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 711
+        width: 103
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: title_separated_7
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 709
+        width: 238
+        height: 148
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
