@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CheckWin : MonoBehaviour {
     public static bool gameover;
     public List<Transform> points;
     public GameObject gameoverScreenPrefab;
+    public Transform againButton;
+
 	void Start () {
         gameover = false;
-
+        againButton.localScale = Vector3.zero;
     }
 	
 	// Update is called once per frame
@@ -36,5 +39,7 @@ public class CheckWin : MonoBehaviour {
     {
         gameover = true;
         Instantiate(gameoverScreenPrefab);
+        againButton.DOScale(Vector3.one, 0.2f);
+
     }
 }
