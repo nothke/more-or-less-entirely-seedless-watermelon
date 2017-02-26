@@ -6,6 +6,7 @@ using System.Linq;
 public class Bite : MonoBehaviour {
     public static List<Bite> bites;
     public float closenessRadius;
+    public float seedlessRadius;
     public AudioClip sound;
     public bool ignoreCheck;
     private void Awake()
@@ -18,18 +19,26 @@ public class Bite : MonoBehaviour {
             if (valid) break;
             valid |= cols[i].GetComponent<Bite>() && cols[i].GetComponent<Bite>() != this;
         }
-        Debug.Log("1:" + valid);
+        //Debug.Log("1:" + valid);
         cols = Physics2D.OverlapPointAll(transform.position);
-        for (int i = 0; i < cols.Length; i++)//check if your press melon
+        for (int i = 0; i < cols.Length; i++)//check if you don't press a bit
         {
             if (!valid) break;
             valid &= !(cols[i].GetComponent<Bite>() && cols[i].GetComponent<Bite>() != this); 
         }
 
-        Debug.Log("2:" + valid);
-        valid &= cols.Any((e) => { return e.GetComponent<ExtraDrag>() ; });
+        //Debug.Log("2:" + valid);
+        valid &= cols.Any((e) => { return e.GetComponent<ExtraDrag>() ; });//check if you don't press the melon
 
-        Debug.Log("3:" + valid);
+        //Debug.Log("3:" + valid);
+        cols = Physics2D.OverlapCircleAll(transform.position, seedlessRadius);
+        for (int i = 0; i < cols.Length; i++)//check if you don't press a bit
+        {
+            if (!valid) break;
+            valid &= !(cols[i].GetComponent<Seed>() );
+        }
+        //Debug.Log("4:" + valid);
+
         if (valid)
         {
             bites.Add(this);
