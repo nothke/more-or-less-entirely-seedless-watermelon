@@ -31,6 +31,7 @@ public class MainMenu : MonoBehaviour
 
     public AudioClip preepsClip;
     public AudioClip presentClip;
+    public GameObject musicPrefab;
 
     void Start()
     {
@@ -93,8 +94,12 @@ public class MainMenu : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
 
+
         playButton.DOScale(1, 0.2f);
         creditsButton.DOScale(1, 0.2f);
+
+        yield return new WaitForSeconds(0.8f);
+        DontDestroyOnLoad(Instantiate(musicPrefab));
     }
 
     private void Update()
@@ -109,11 +114,20 @@ public class MainMenu : MonoBehaviour
 
     public Transform playButton;
     public Transform creditsButton;
-
+    bool creditsEnabled = false;
     public void ShowCredits()
     {
-        pivot.DOMoveX(10, 0.3f);
-        credits.DOMoveX(0.14f, 0.3f);
+        creditsEnabled = !creditsEnabled;
+        if (creditsEnabled)
+        {
+            pivot.DOMoveX(10, 0.3f);
+            credits.DOMoveX(0.14f, 0.3f);
+        }
+        else
+        {
+            pivot.DOMoveX(0, 0.3f);
+            credits.DOMoveX(-10f, 0.3f);
+        }
     }
 
     public void StartGame()
