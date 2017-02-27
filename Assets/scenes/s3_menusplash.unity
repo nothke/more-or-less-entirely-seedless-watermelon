@@ -1472,6 +1472,8 @@ MonoBehaviour:
     sprite: {fileID: 1902671705}
   preepsClip: {fileID: 8300000, guid: bae339d7bb43a2343bac44bcafd55d78, type: 3}
   presentClip: {fileID: 8300000, guid: 6a6b85284489e9446a163f0072ceb5a9, type: 3}
+  musicPrefab: {fileID: 1029576139556854, guid: dd0638c218d903747aa92f33126f482a,
+    type: 2}
   credits: {fileID: 290567245}
   playButton: {fileID: 1705869957}
   creditsButton: {fileID: 1846498489}
